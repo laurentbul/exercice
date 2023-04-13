@@ -37,10 +37,12 @@ if (!isset($_SESSION['name'])) {
 <body>
 
 <h1>Information Artist</h1>
+<a href="/artist_detail.php?" <?= $artist->artist_id ?>>Visit W3Schools.com!</a>
 
-<button onclick ="document.location='localhost/code/ncode/script_artist_ajout.php'"> ajouter artist  </button>
-<button onclick ="document.location='localhost/code/ncode/script_artist_delete.php'"> ajouter artist  </button>
-<button onclick ="document.location='localhost/code/ncode/script_artist_modif.php'"> modifier artist  </button>
+<button onclick ="document.location='artist_detail.php'"> read artist  </button>
+<button onclick ="document.location='artist_form.php'"> modifier artist  </button>
+<button onclick ="document.location='artist_new.php'"> ajouter artist  </button>
+<button onclick ="document.location='artist_delete.php'"> supprimer artist  </button>
 
 <?php foreach ($tableau as $alo): ?> <?= $alo->artist_id ?> <?php endforeach; ?>
     <table style="border: 1px solid ; margin-top: 100px;">
@@ -48,16 +50,19 @@ if (!isset($_SESSION['name'])) {
             <th  style="border: 1px solid;">ID</th>
             <th  style="border: 1px solid;">Nom</th>
             <th  style="border: 1px solid;">URL</th>
+            <th  style="border: 1px solid;">image</th>
             <th  style="border: 1px solid;">Données Brut artist</th>
         </tr>
 
         <?php foreach ($tableau as $artist): ?>
 
+            <!-- <td><img class="img-responsive jaquette_index" src="jaquettes/<?= $disc->disc_picture ?>"></td> -->
 
             <tr  style="border: 1px solid;">
                 <td  style="border: 1px solid;"><?= $artist->artist_id ?></td>
                 <td  style="border: 1px solid;"><?= $artist->artist_name ?></td>
                 <td  style="border: 1px solid;"><?= $artist->artist_url ?></td>
+                <td  style="border: 1px solid;"><img src="./<?= $artist->image?>" width="50" height="60"></td>
                 <td  style="border: 1px solid;">  <?php var_dump($artist); // Le var_dump() est écrit à titre informatif ?></td>
 
             </tr>
